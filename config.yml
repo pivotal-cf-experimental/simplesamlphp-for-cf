@@ -1,0 +1,4 @@
+opsman_uaa: "https://opsmgr.domain:443"
+bosh_uaa: "https://10.1.1.11:8443"
+ert_uaa: "http://login.system.domain"
+app_name: "mysaml"
