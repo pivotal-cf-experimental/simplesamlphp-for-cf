@@ -1027,6 +1027,10 @@ class sspmod_saml_IdP_SAML2 {
 	private static function buildResponse(SimpleSAML_Configuration $idpMetadata,
 		SimpleSAML_Configuration $spMetadata, $consumerURL) {
 
+		/*
+		 * Hack consumerURL because ERT sets "http" instead of "https" for the entityid in the saml metadata
+		*/
+		$consumerURL = str_replace("http://", "https://", $consumerURL);
 		$signResponse = $spMetadata->getBoolean('saml20.sign.response', NULL);
 		if ($signResponse === NULL) {
 			$signResponse = $idpMetadata->getBoolean('saml20.sign.response', TRUE);
