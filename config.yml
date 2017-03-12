@@ -1,4 +1,4 @@
-opsman_uaa: "https://opsmgr-17.haas-59.pez.pivotal.io:443"
-bosh_uaa: "https://10.193.82.11:8443"
-ert_uaa: "http://danl-sso.login.run-17.haas-59.pez.pivotal.io"
-app_name: "danl-saml2"
+opsman_uaa: "https://opsmgr.domain:443"
+bosh_uaa: "https://10.1.1.11:8443"
+ert_uaa: "http://login.system.domain"
+app_name: "mysaml"

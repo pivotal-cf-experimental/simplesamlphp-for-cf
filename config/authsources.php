@@ -94,12 +94,14 @@ $config = array(
 
         'admin:password' => array(
             'uid' => 'admin@test.org',
-            'emailAddress' => 'admin@test.org'
+            'emailAddress' => 'admin@test.org',
+            'external_groups' => 'pcfadmins'
         ),
 
         'user:password' => array(
             'uid' => 'user@test.org',
-            'emailAddress' => 'user@test.org'
+            'emailAddress' => 'user@test.org',
+            'external_groups' => 'pcfusers'
         ),
 
         'nobody:password' => array(

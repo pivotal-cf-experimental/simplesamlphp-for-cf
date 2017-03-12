@@ -32,7 +32,7 @@ else
   opsman_url = prompt "What is the scheme, host and port of your Ops Manager's UAA? (Example 'https://opsmgr-xx.haas-59.pez.pivotal.io:443') "
   opsman_url = 'http://localhost:8080' if opsman_url.empty?
   bosh_url = prompt "What is the scheme, host and port of your BOSH director's UAA? (Example 'https://DIRECTOR_IP:8443'). Leave this empty if the director has not been deployed yet. "
-  ert_url = prompt "What is the scheme, hostname of your ERT SSO identity zone? (Example 'https://login.run-17.haas-59.pez.pivotal.io/saml/metadata:443'). optional leave blank to ignore. "
+  ert_url = prompt "What is the scheme, hostname of your ERT SSO identity zone? (Example 'http://login.run-17.haas-59.pez.pivotal.io/saml/metadata:443'). optional leave blank to ignore. "
   name = prompt 'App name on PCF: '
 end
 
@@ -62,10 +62,11 @@ $metadata['#{bosh_entity_id}'] = array(
 );
 PHP
 
+## need to force HTTPS for the assertion consumer and single logout service so we dont get a saml assertion validation error
 ert_metadata = <<-PHP
 $metadata['#{ert_entity_id}'] = array(
-    'AssertionConsumerService' => '#{ert_url}/saml/SSO/alias/#{ert_entity_alias}',
-    'SingleLogoutService' => '#{ert_url}/saml/SingleLogout/alias/#{ert_entity_alias}',
+    'AssertionConsumerService' => 'https://#{ert_entity_alias}/saml/SSO/alias/#{ert_entity_alias}',
+    'SingleLogoutService' => 'https://#{ert_entity_alias}/saml/SingleLogout/alias/#{ert_entity_alias}',
     'NameIDFormat' => 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress',
     'simplesaml.nameidattribute' => 'emailAddress',
 );
