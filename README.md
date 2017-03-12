@@ -12,8 +12,8 @@ This is a code fork for the simplesamlphp in it's configured, ready to deploy to
 This is used for to test SAML authentication with Ops Manager, Bosh Director, ERT, and SSO
 
 # Preconfigured Users
-IDP Admin User login: admin / password [ mapped to pcfadmins group [config/authsources.php](config/authsources.php) ]<br>
-IDP User login: user / password [ mapped to pcfusers group see [config/authsources.php](config/authsources.php)]
+IDP Admin User login: admin / password [ mapped to pcfadmins group [config/authsources.php](config/authsources.php) <br>
+IDP User login: user / password [ mapped to pcfusers group see [config/authsources.php](config/authsources.php)
 simplesamlphp Admin login: admin / pizza9pixel
 
 
@@ -24,7 +24,7 @@ simplesamlphp Admin login: admin / pizza9pixel
   * opsman_uaa: https://opsman.domain:443
   * bosh_uaa: https://BOSH_DIRECTOR_IP:8443
   * ert_uaa: [ http://login.system.domain || http://sso.login.system.domain ]
-    * Important NOTE:  ERT tile hard codes the [entityid](https://github.com/pivotal-cf/p-runtime/blob/rel/1.10/metadata_parts/jobs/uaa.yml#L336) with `http` instead of `https` and this causes some issues with simplesamlphp.  This commit 7c467ce5e065651f4d57423dcd08f64fa883a721 works around the  problem but the SP metadata in [config.yml](config.yml) will need to have http to match the IDP metatdata with the UAA. 
+    * Important NOTE:  ERT tile hard codes the [entityid](https://github.com/pivotal-cf/p-runtime/blob/rel/1.10/metadata_parts/jobs/uaa.yml#L336) with `http` instead of `https` and this causes some issues with simplesamlphp.  This commit [7c467ce5e065651f4d57423dcd08f64fa883a721](7c467ce5e065651f4d57423dcd08f64fa883a721) works around the  problem but the SP metadata in [config.yml](config.yml) will need to have http to match the IDP metatdata with the UAA. 
   * app_name: the name of the deployed cloud foundry app
 
 ```
